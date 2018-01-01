@@ -47,7 +47,7 @@ addContainer;
 ```
 rowStart;
 
-<center><h1 id="blink">My Awsome Website</h1></center>
+<center><h1>My Awsome Website</h1></center>
 
 rowEnd;
 ```
@@ -73,7 +73,7 @@ rowEnd;
 
 ```
 padding;
-addFooter;{email:myEmail@mail.com,date:01/07/1999,copy:Web Develop}
+addFooter;{email:myEmail@mail.com,date:01/07/1999,copy:Web Develop34}
 ```
 
 
@@ -81,7 +81,7 @@ addFooter;{email:myEmail@mail.com,date:01/07/1999,copy:Web Develop}
 
 
 ```
-SimpleHtmlBuilder.exe websiteScript.shb
+SpeedyHtmlBuilder.exe websiteScript.shb
 ```
 
 ## Css Classes
