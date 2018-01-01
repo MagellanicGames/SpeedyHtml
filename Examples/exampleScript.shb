@@ -1,0 +1,31 @@
+MyAwesomeWebsiteTitle,myUniqueStyleSheet.css
+addContainer;
+rowStart;
+
+<center><h1 id="blink">My Awsome Website</h1></center>
+
+rowEnd;
+
+padding;
+
+rowStart;
+<h3>My Article Title</h3>
+rowEnd;
+
+rowStart;
+<img src="myimg.gif">
+rowEnd;
+
+rowStart;
+
+<p> Here is my website, it is really fantastic and complicated.  Only a genius could make a website this
+sophisticated and pretty.Here is my website, it is really fantastic and complicated.  Only a genius could make a website this
+sophisticated and pretty.Here is my website, it is really fantastic and complicated.  Only a genius could make a website this
+sophisticated and pretty.Here is my website, it is really fantastic and complicated.  Only a genius could make a website this
+sophisticated and pretty.
+Here is my website, it is really fantastic and complicated.  Only a genius could make a website this
+sophisticated and pretty.
+</p>
+rowEnd;
+padding;
+addFooter;{email:myEmail@mail.com,date:01/07/1999,copy:Web Develop}
