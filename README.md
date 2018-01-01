@@ -84,10 +84,58 @@ SpeedyHtmlBuilder.exe websiteScript.shb
 
 # Syntax
 
-## Css Classes
+## First Line
+
+First line contains the title and an optional CSS stylesheet name:
+
+```
+WebsiteTitle, Style.css
+```
+
+## Add a Container
+
+```
+addContainer;
+```
+
+## Start a Row
+
+A container must be added before calling.
+
+```
+rowStart;
+```
+
+Content html goes after add.
+
+## Close a Row
+
+Before starting a new row, the old row must be closed off with:
+
+```
+rowEnd;
+```
+
+## Adding Raw HTML
+
+This command is used for adding bare html to a site and will not be added to any containers.
+Useful for adding html that doesn't need to be within the main page structure.
+Follows same structure as rows:
+
+```
+htmlStart;
+```
+
+Html goes in between. then close off with:
+
+```
+htmlEnd;
+```
+
+### Css Classes
 
 
-### Containers
+## Containers
 
 To add a css class to a container:
 ```
@@ -98,7 +146,7 @@ Just as with typical html/css, to add multiple class, simply seperate them with 
 addContainer;{class:myCssClass1 myCassClass2}
 ```
 
-### Rows
+## Rows
 
 Css classes work the same as for containers, just attach them to the rowStart:
 ```
