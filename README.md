@@ -17,12 +17,9 @@ Containers hold rows and any number of rows can be added to a container.
 Any sections of raw html must be between an htmlStart and htmlEnd.
 This is for easier customisation, such as adding navigation bars etc.
 
-
-## Syntax
+# Step-by-Step Example
 
 This section will make a very basic example site.
-
-
 
 ### Step1
 
@@ -83,6 +80,9 @@ addFooter;{email:myEmail@mail.com,date:01/07/1999,copy:Web Develop34}
 ```
 SpeedyHtmlBuilder.exe websiteScript.shb
 ```
+
+
+# Syntax
 
 ## Css Classes
 
