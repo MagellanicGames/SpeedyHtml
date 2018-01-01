@@ -93,7 +93,7 @@ To add a css class to a container:
 ```
 addContainer;{class:myCssClass1}
 ```
-Just as with typical html/css, do add multiple class, simply seperate them with a space:
+Just as with typical html/css, to add multiple class, simply seperate them with a space:
 ```
 addContainer;{class:myCssClass1 myCassClass2}
 ```
