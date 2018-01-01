@@ -29,28 +29,29 @@ This section will make a very basic example site.
 
 First line contains title and stylesheet
 
-e.g: MyAwesomeWebsiteTitle,myUniqueStyleSheet.css
-
+```
+MyAwesomeWebsiteTitle,myUniqueStyleSheet.css
+```
 
 
 ### step2 - Create a container
 
-
+```
 addContainer;
-
+```
 
 ### Step3 - Add a row with a title
-
+```
 rowStart;
 
 <center><h1 id="blink">My Awsome Website</h1></center>
 
 rowEnd;
-
+```
 
 ### Step4 - Add a row with a paragraph and padding above
 
-
+```
 padding;
 rowStart;
 
@@ -63,22 +64,22 @@ Here is my website, it is really fantastic and complicated.  Only a genius could
 sophisticated and pretty.
 </p>
 rowEnd;
-
+```
 
 ### Step5 - Add some more padding then a footer
 
-
+```
 padding;
 addFooter;{email:myEmail@mail.com,date:01/07/1999,copy:Web Develop}
-
+```
 
 
 ### Step6 - Save with the .shb extension and run through Simple Html builder
 
 
-
+```
 SimpleHtmlBuilder.exe websiteScript.shb
-
+```
 
 ## Css Classes
 
@@ -86,21 +87,21 @@ SimpleHtmlBuilder.exe websiteScript.shb
 ### Containers
 
 To add a css class to a container:
-
+```
 addContainer;{class:myCssClass1}
-
+```
 Just as with typical html/css, do add multiple class, simply seperate them with a space:
-
+```
 addContainer;{class:myCssClass1 myCassClass2}
-
+```
 
 ### Rows
 
 Css classes work the same as for containers, just attach them to the rowStart:
-
+```
 rowStart;{class:myCssClass}
-
+```
 Multiple classes are the same as with containers, simply list, seperating with spaces:
-
+```
 rowStart;{class:myCssClass1 myCssClass2}
-
+```
