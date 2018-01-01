@@ -43,7 +43,7 @@ MyAwesomeWebsiteTitle
 addContainer;
 ```
 
-### Step3 - Add a row with a title
+### Step3 - Add a row with a heading
 ```
 rowStart;
 
