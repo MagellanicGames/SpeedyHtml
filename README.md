@@ -27,13 +27,16 @@ This section will make a very basic example site.
 ### Step1
 
 
-First line contains title and stylesheet
+First line contains title and stylesheet.
 
 ```
 MyAwesomeWebsiteTitle,myUniqueStyleSheet.css
 ```
+To use the default stylesheet simply state the website title.
 
-
+```
+MyAwesomeWebsiteTitle
+```
 ### step2 - Create a container
 
 ```
