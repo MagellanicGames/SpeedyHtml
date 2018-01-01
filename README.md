@@ -47,7 +47,7 @@ addContainer;
 ```
 rowStart;
 
-<center><h1>My Awsome Website</h1></center>
+<center><h1>My Awesome Website</h1></center>
 
 rowEnd;
 ```
