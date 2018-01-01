@@ -1,5 +1,5 @@
-SimpleHtmlBuilder
-==================
+# SimpleHtmlBuilder
+
 
 The point of this little program is to make a quick respectible site with minimal effort.  Websites made with this tool
 will scale across all device types.  Small mobile screens up to large HD desktop screens.  This is of course all thanks
@@ -17,30 +17,29 @@ Containers hold rows and any number of rows can be added to a container.
 Any sections of raw html must be between an htmlStart and htmlEnd.
 This is for easier customisation, such as adding navigation bars etc.
 
-================
-Syntax
-================
-this section will make a very basic example site.
+
+## Syntax
+
+This section will make a very basic example site.
 
 
-=====
-step1=
-=====
+
+### Step1
+
 
 First line contains title and stylesheet
 
 e.g: MyAwesomeWebsiteTitle,myUniqueStyleSheet.css
 
 
-====
-step2= Create a container
-====
+
+### step2 - Create a container
+
 
 addContainer;
 
-====
-step3= Add a row with a title
-====
+
+### Step3 - Add a row with a title
 
 rowStart;
 
@@ -48,9 +47,9 @@ rowStart;
 
 rowEnd;
 
-=====
-step4= Add a row with a paragraph and padding above
-=====
+
+### Step4 - Add a row with a paragraph and padding above
+
 
 padding;
 rowStart;
@@ -65,27 +64,27 @@ sophisticated and pretty.
 </p>
 rowEnd;
 
-=====
-step5= Add some more padding then a footer
-=====
+
+### Step5 - Add some more padding then a footer
+
 
 padding;
 addFooter;{email:myEmail@mail.com,date:01/07/1999,copy:Web Develop}
 
 
-====
-step6= Save with the .shb extension and run through Simple Html builder
-====
+
+### Step6 - Save with the .shb extension and run through Simple Html builder
+
 
 
 SimpleHtmlBuilder.exe websiteScript.shb
 
-================================
-Css Classes
-=================================
 
-Containers:
-===========
+## Css Classes
+
+
+### Containers
+
 To add a css class to a container:
 
 addContainer;{class:myCssClass1}
@@ -95,8 +94,8 @@ Just as with typical html/css, do add multiple class, simply seperate them with 
 addContainer;{class:myCssClass1 myCassClass2}
 
 
-Rows:
-=======
+### Rows
+
 Css classes work the same as for containers, just attach them to the rowStart:
 
 rowStart;{class:myCssClass}
