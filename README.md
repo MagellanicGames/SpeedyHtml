@@ -5,6 +5,9 @@ The point of this little program is to make a quick respectible site with minima
 will scale across all device types.  Small mobile screens up to large HD desktop screens.  This is of course all thanks
 to Bootstrap.  Sites generated with this tool use the CDN for Bootstrap.
 
+This tool should allow you to focus simply on the content, not "is this paragraph centered?". Obviously functionality is limited
+but its for basic needs, temporary sites or simply as base template to build a better webpage.
+
 The program takes input of an .shb file.
 Simply run .shb script files from a console like so: SpeedyHtmlBuilder.exe script.shb
 
