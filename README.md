@@ -5,8 +5,11 @@ The point of this little program is to make a quick respectible site with minima
 will scale across all device types.  Small mobile screens up to large HD desktop screens.  This is of course all thanks
 to Bootstrap.  Sites generated with this tool use the CDN for Bootstrap.
 
+This tool should allow you to focus simply on the content, not "is this paragraph centered?". Obviously functionality is limited
+but its intended for one page sites, temporary sites or simply as base template to build a better webpage.
+
 The program takes input of an .shb file.
-Simply run .shb script files from a console like so: SimpleHtmlBuilder.exe script.shb
+Simply run .shb script files from a console like so: SpeedyHtmlBuilder.exe script.shb
 
 The structure of the website follows basic Bootstrap grid structure.
 
@@ -16,6 +19,10 @@ Containers hold rows and any number of rows can be added to a container.
 
 Any sections of raw html must be between an htmlStart and htmlEnd.
 This is for easier customisation, such as adding navigation bars etc.
+
+## Building
+
+Just pull the project.  Open in Visual Studio 2015, select Release and build.  Move the built exe to where is easiest to use.
 
 # Step-by-Step Example
 
@@ -41,15 +48,13 @@ addContainer;
 ```
 ### Step3 - Add a heading
 ```
-heading(text:My Awesome Website Title,class:red);
+heading(text:My Awesome Website Heading,class:myCssClass);
 ```
 
 ### Step4 - Add a sub heading
 
 ```
-rowStart;
-<h3>My Article Title</h3>
-rowEnd;
+subHeading(text:My Article Title,class:myCssClass);
 ```
 
 ### Step5- Add an image
@@ -89,6 +94,9 @@ addFooter(email:myEmail@mail.com,date:01/07/1999,copy:Web Developer);
 SpeedyHtmlBuilder.exe websiteScript.shb
 ```
 
+## Complete Example
+
+An example without any styling can be found in the Examples folder
 
 # Syntax
 
