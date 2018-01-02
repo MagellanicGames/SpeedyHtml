@@ -192,6 +192,14 @@ Html goes in between. then close off with:
 htmlEnd;
 ```
 
+## Adding Scripts (e.g Javascript)
+
+```
+addScript(myScript.js);
+```
+Scripts will be added below all other html.  To specify where they should be, the htmlStart and htmlEnd functions should be
+used.
+
 ### Css Classes
 
 
