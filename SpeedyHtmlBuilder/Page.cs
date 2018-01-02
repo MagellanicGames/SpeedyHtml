@@ -167,19 +167,31 @@ namespace SpeedyHtmlBuilder
             mContainers[mContainers.Count - 1].AddRow(content, classProperties);
         }
 
-        public void AddHeading(string text,string cssClass)
+        public void AddHeading(string line)
         {
+            string text = StringUtils.SubString(line, "(text:", ",class:");
+            string cssClass = StringUtils.SubString(line, ",class:", ");");
             AddRowToLastAddedContainer(StartTag("center") + StartTag("h1", cssClass) + text + EndTag("h1") + EndTag("center"));
         }
 
-        public void AddSubHeading(string text, string cssClass)
+        public void AddSubHeading(string line)
         {
+            string text = StringUtils.SubString(line, "(text:", ",class:");
+            string cssClass = StringUtils.SubString(line, ",class:", ");");
             AddRowToLastAddedContainer(StartTag("h3", cssClass) + text + EndTag("h3") );
         }
 
-        public void AddImage(string imageName)
+        public void AddImage(string line)
         {
+            string imageName = StringUtils.SubString(line, "addImage(", ");");
             AddRowToLastAddedContainer(StartTag("img" + Attribute("src", imageName)));
+        }
+
+        public void AddImageCentered(string line)
+        {
+            string imageName = StringUtils.SubString(line, "Centered(", ");");
+            string html = StartTag("center") + StartTag("img" + Attribute("src", imageName)) + EndTag("center");
+            AddRowToLastAddedContainer(html);
         }
 
         public void AddHtml(string html)
@@ -187,25 +199,80 @@ namespace SpeedyHtmlBuilder
             mContainers.Add(new Container(html, true));
         }
 
-        public void AddFooter(string email, string date, string copyright)
+        public void AddFooter(string line)
         {
+            string email = StringUtils.SubString(line, "email:", ",date:");
+            string date = StringUtils.SubString(line, ",date:", ",copy:");
+            string copy = StringUtils.SubString(line, ",copy:", ");");
 
             string footer = StartTag("footer") + StartTag("h6") + "Email: " + email + StartTag("br") + n;
             footer += "Last Updated: " + date + StartTag("br") + n;
-            footer += "Copyright: " + copyright + EndTag("h6") + n;
+            footer += "Copyright: " + copy + EndTag("h6") + n;
             footer += EndTag("footer") + n;
 
             AddRowToLastAddedContainer(footer);
         }
 
-        private string AddIcon()
+        public void AddContainer(string line)
         {
-            return StartTag("span", "glyphicon glyphicon-envelope") + EndTag("span");
+            if (line.Contains("{class:"))
+            {
+               string props = StringUtils.SubString(line, "{class:", "}");
+               mContainers.Add(new Container("container-fluid " + props));
+            }
+            else
+                mContainers.Add(new Container());
         }
+       
 
         public void Padding()
         {
             AddRowToLastAddedContainer(StartTag("div", "row padding") + EndTag("div"));
+        }
+
+        public void RowStart(List<string> script, int rowStartPos)
+        {
+            string properties = "";
+            string rowStartLine = script[rowStartPos];
+            if (rowStartLine.Contains("{class:"))
+            {
+                properties = StringUtils.SubString(rowStartLine, "{class:", "}");
+            }
+            int rowEndPos = FindRowEnd(script, rowStartPos);
+
+            rowStartPos++;
+            if(rowEndPos == 0)
+            {
+                Console.WriteLine("Hanging rowStart, no rowEnd found.");
+                return;
+            }
+            string content = "";
+
+            rowEndPos++;
+            for(int i = rowStartPos;i<rowEndPos - 1;i++)
+            {
+                content += script[i] + "\n";
+            } 
+
+            AddRowToLastAddedContainer(content, properties);
+        }
+
+        private int FindRowEnd(List<string> script, int currentPosition)
+        {
+            if (currentPosition > script.Count - 1)
+                return 0;
+
+            for(int i = currentPosition; i < script.Count;i++)
+            {
+                if (script[i].Contains("rowEnd;"))
+                    return i;
+            }
+            return 0;
+        }
+
+        private string AddIcon()
+        {
+            return StartTag("span", "glyphicon glyphicon-envelope") + EndTag("span");
         }
 
         public static string H1(string innerHTML, string id = "")
@@ -243,15 +310,7 @@ namespace SpeedyHtmlBuilder
 
             result += StartTag("a" + Attribute("href", url), classProperty) + innerHtml + EndTag("a");
             return result;
-        }
-
-
-
-
-        public void AddContainer(string classProperty = "container-fluid")
-        {
-            mContainers.Add(new Container(classProperty));
-        }
+        }       
 
         private void CloseBodyHtml()
         {

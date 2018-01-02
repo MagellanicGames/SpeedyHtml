@@ -53,75 +53,77 @@ namespace SpeedyHtmlBuilder
                 title = source[0];
                 cssStyle = "style.css";
             }
-           
-
 
             Page page = new Page(title, cssStyle);
 
-            string rowStart = "rowStart;";
-            string rowEnd = "rowEnd;";
+            string rowStart = "rowStart;";        
             string padding = "padding;";
             string addContainer = "addContainer;";
             string htmlStart = "htmlStart;";
             string htmlEnd = "htmlEnd;";
-            string classProperties = "{class:";
+         
             string addFooter = "addFooter(";
             string addImage = "addImage(";
             string heading = "heading(";
             string subHeading = "subHeading(";
+            string addImageCentered = "addImageCentered(";
 
+            for(int i = 0; i < source.Count;i++)
+            {
+                if (String.IsNullOrWhiteSpace(source[i]))
+                {
+                    source.RemoveAt(i);
+                    i--;
+                }   
+            }
 
             for (int i = 1; i < source.Count; i++)
             {
-                var line = source[i];
-
-                if (String.IsNullOrWhiteSpace(line))
-                    continue;
+                var line = source[i];            
 
                 if (line.Contains(addContainer))
                 {
-
-                    if (line.Contains("{class:"))
-                    {
-                        string props = StringUtils.SubString(line, "{class:", "}");
-                        page.AddContainer("container-fluid " + props);
-                    }
-                    else
-                        page.AddContainer();
-
+                    page.AddContainer(line);    
                     continue;
-                }
-
-
-                if (line.Contains(rowStart))
-                {
-                    string properties = "";
-                    if (line.Contains(classProperties))
-                    {
-                        properties = StringUtils.SubString(line, "{class:", "}");
-                    }
-                    i++;
-                    string content = "";
-                    while (source[i].Contains(rowEnd) == false)
-                    {
-
-                        content += source[i] + "\n";
-                        i++;
-
-                        if (i > source.Count - 1)
-                        {
-                            Console.WriteLine("Hanging rowStart, no rowEnd found.");
-                            break;
-                        }
-                    }
-
-                    page.AddRowToLastAddedContainer(content, properties);
-                    continue;
-                }
+                }                
 
                 if (line == padding)
                 {
                     page.Padding();
+                    continue;
+                }
+               
+
+                if (line.Contains(addFooter))
+                {          
+                    page.AddFooter(line);
+                    continue;
+                }
+
+                if(line.Contains(addImage))
+                {                   
+                    page.AddImage(line);
+                    continue;
+                }
+
+                if(line.Contains(heading))
+                {                   
+                    page.AddHeading(line);                    
+                }
+
+                if(line.Contains(subHeading))
+                {                   
+                    page.AddSubHeading(line);
+                }
+
+                if(line.Contains(addImageCentered))
+                {                   
+                    page.AddImageCentered(line);
+                }
+
+                if (line.Contains(rowStart))
+                {
+                    page.RowStart(source, i);
                     continue;
                 }
 
@@ -143,48 +145,18 @@ namespace SpeedyHtmlBuilder
                     page.AddHtml(content);
                     continue;
                 }
-
-                if (source[i].Contains(addFooter))
-                {
-                    string email = StringUtils.SubString(source[i], "email:", ",date:");
-                    string date = StringUtils.SubString(source[i], ",date:", ",copy:");
-                    string copy = StringUtils.SubString(source[i], ",copy:", ");");
-
-                    page.AddFooter(email, date, copy);
-                    continue;
-                }
-
-                if(line.Contains(addImage))
-                {
-                    string imageName = StringUtils.SubString(line, "addImage(", ");");
-                    page.AddImage(imageName);
-                    continue;
-
-                }
-
-                if(line.Contains(heading))
-                {
-                    string text = StringUtils.SubString(line, "(text:", ",class:");
-                    string cssClass = StringUtils.SubString(line, ",class:", ");");
-                    page.AddHeading(text, cssClass);
-                }
-
-                if(line.Contains(subHeading))
-                {
-                    string text = StringUtils.SubString(line, "(text:", ",class:");
-                    string cssClass = StringUtils.SubString(line, ",class:", ");");
-                    page.AddSubHeading(text, cssClass);
-                }
             }
 
 
 
-            page.SaveToFile("index");
+            page.SaveToFile(args_list[0].Split('.')[0]);
 
             string css = "div.padding{\npadding-top:30px;\n}";
             if (!File.Exists("style.css"))
                 File.WriteAllText("style.css",css);
         }
+
+
     }
 
 
