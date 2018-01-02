@@ -133,6 +133,12 @@ addImage(imageName/url);
 ```
 Does not require rowStart or rowEnd.
 
+# Center Image
+
+```
+addImageCentered(imageName/url);
+```
+
 ## Add Padding
 
 If using the default style sheet, simply use the following command to add padding:
