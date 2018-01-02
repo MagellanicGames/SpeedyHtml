@@ -94,6 +94,9 @@ addFooter(email:myEmail@mail.com,date:01/07/1999,copy:Web Developer);
 SpeedyHtmlBuilder.exe websiteScript.shb
 ```
 
+## Examples
+
+An example without any styling can be found in the Examples folder
 
 # Syntax
 
