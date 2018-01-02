@@ -133,7 +133,7 @@ addImage(imageName/url);
 ```
 Does not require rowStart or rowEnd.
 
-# Center Image
+### Center Image
 
 ```
 addImageCentered(imageName/url);
