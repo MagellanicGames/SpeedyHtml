@@ -97,24 +97,17 @@ WebsiteTitle, Style.css
 ```
 addContainer;
 ```
-
-## Start a Row
-
-A container must be added before calling.
+## Add a Heading
 
 ```
-rowStart;
+addHeading(text:My Title,class:red);
 ```
-
-Content html goes after add.
-
-## Close a Row
-
-Before starting a new row, the old row must be closed off with:
+To pass no class, simply leave blank:
 
 ```
-rowEnd;
+addHeading(text:My Title,class:);
 ```
+
 ## Add an Image
 
 To add an image on its own row in a single line simply requires the following syntax:
@@ -142,6 +135,24 @@ addFooter(email:email@mail.com,date:01/07/1999,copy:yourName);
 ```
 
 Does not require a call to rowStart. Does need to be within a container.
+
+## Start a Row
+
+A container must be added before calling.
+
+```
+rowStart;
+```
+
+Content html goes after add.
+
+## Close a Row
+
+Before starting a new row, the old row must be closed off with:
+
+```
+rowEnd;
+```
 
 ## Adding Raw HTML
 
