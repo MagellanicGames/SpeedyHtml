@@ -41,7 +41,7 @@ addContainer;
 ```
 ### Step3 - Add a heading
 ```
-heading(text:My Awesome Website Title,class:myCssClass);
+heading(text:My Awesome Website Heading,class:myCssClass);
 ```
 
 ### Step4 - Add a sub heading
