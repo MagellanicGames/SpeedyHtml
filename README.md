@@ -17,40 +17,41 @@ Containers hold rows and any number of rows can be added to a container.
 Any sections of raw html must be between an htmlStart and htmlEnd.
 This is for easier customisation, such as adding navigation bars etc.
 
-
-## Syntax
+# Step-by-Step Example
 
 This section will make a very basic example site.
-
-
 
 ### Step1
 
 
-First line contains title and stylesheet
+First line contains title and stylesheet.
 
-e.g: MyAwesomeWebsiteTitle,myUniqueStyleSheet.css
+```
+MyAwesomeWebsiteTitle,myUniqueStyleSheet.css
+```
+To use the default stylesheet simply state the website title.
 
-
-
+```
+MyAwesomeWebsiteTitle
+```
 ### step2 - Create a container
 
-
+```
 addContainer;
+```
 
-
-### Step3 - Add a row with a title
-
+### Step3 - Add a row with a heading
+```
 rowStart;
 
-<center><h1 id="blink">My Awsome Website</h1></center>
+<center><h1>My Awesome Website</h1></center>
 
 rowEnd;
-
+```
 
 ### Step4 - Add a row with a paragraph and padding above
 
-
+```
 padding;
 rowStart;
 
@@ -63,44 +64,95 @@ Here is my website, it is really fantastic and complicated.  Only a genius could
 sophisticated and pretty.
 </p>
 rowEnd;
-
+```
 
 ### Step5 - Add some more padding then a footer
 
-
+```
 padding;
-addFooter;{email:myEmail@mail.com,date:01/07/1999,copy:Web Develop}
-
+addFooter;{email:myEmail@mail.com,date:01/07/1999,copy:Web Develop34}
+```
 
 
 ### Step6 - Save with the .shb extension and run through Simple Html builder
 
 
-
-SimpleHtmlBuilder.exe websiteScript.shb
-
-
-## Css Classes
+```
+SpeedyHtmlBuilder.exe websiteScript.shb
+```
 
 
-### Containers
+# Syntax
+
+## First Line
+
+First line contains the title and an optional CSS stylesheet name:
+
+```
+WebsiteTitle, Style.css
+```
+
+## Add a Container
+
+```
+addContainer;
+```
+
+## Start a Row
+
+A container must be added before calling.
+
+```
+rowStart;
+```
+
+Content html goes after add.
+
+## Close a Row
+
+Before starting a new row, the old row must be closed off with:
+
+```
+rowEnd;
+```
+
+## Adding Raw HTML
+
+This command is used for adding bare html to a site and will not be added to any containers.
+Useful for adding html that doesn't need to be within the main page structure.
+Follows same structure as rows:
+
+```
+htmlStart;
+```
+
+Html goes in between. then close off with:
+
+```
+htmlEnd;
+```
+
+### Css Classes
+
+
+## Containers
 
 To add a css class to a container:
-
+```
 addContainer;{class:myCssClass1}
-
-Just as with typical html/css, do add multiple class, simply seperate them with a space:
-
+```
+Just as with typical html/css, to add multiple class, simply seperate them with a space:
+```
 addContainer;{class:myCssClass1 myCassClass2}
+```
 
-
-### Rows
+## Rows
 
 Css classes work the same as for containers, just attach them to the rowStart:
-
+```
 rowStart;{class:myCssClass}
-
+```
 Multiple classes are the same as with containers, simply list, seperating with spaces:
-
+```
 rowStart;{class:myCssClass1 myCssClass2}
-
+```
