@@ -97,6 +97,44 @@ WebsiteTitle, Style.css
 ```
 addContainer;
 ```
+## Add a Heading
+
+```
+addHeading(text:My Title,class:red);
+```
+To pass no class, simply leave blank:
+
+```
+addHeading(text:My Title,class:);
+```
+
+## Add an Image
+
+To add an image on its own row in a single line simply requires the following syntax:
+
+```
+addImage(imageName/url);
+```
+Does not require rowStart or rowEnd.
+
+## Add Padding
+
+If using the default style sheet, simply use the following command to add padding:
+
+```
+padding();
+```
+Does not require rowStart or rowEnd.
+
+## Footer
+
+Add a footer containing email, update date and copyright notice:
+
+```
+addFooter(email:email@mail.com,date:01/07/1999,copy:yourName);
+```
+
+Does not require a call to rowStart. Does need to be within a container.
 
 ## Start a Row
 
