@@ -115,6 +115,23 @@ Before starting a new row, the old row must be closed off with:
 ```
 rowEnd;
 ```
+## Add an Image
+
+To add an image on its own row in a single line simply requires the following syntax:
+
+```
+addImage(imageName/url);
+```
+Does not require rowStart or rowEnd.
+
+## Add Padding
+
+If using the default style sheet, simply use the following command to add padding:
+
+```
+padding();
+```
+Does not require rowStart or rowEnd.
 
 ## Adding Raw HTML
 
