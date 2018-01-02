@@ -17,6 +17,10 @@ Containers hold rows and any number of rows can be added to a container.
 Any sections of raw html must be between an htmlStart and htmlEnd.
 This is for easier customisation, such as adding navigation bars etc.
 
+## Building
+
+Just pull the project.  Open in Visual Studio 2015, select Release and build.  Move the built exe to where is easiest to use.
+
 # Step-by-Step Example
 
 This section will make a very basic example site.
