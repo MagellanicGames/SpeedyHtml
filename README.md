@@ -6,7 +6,7 @@ will scale across all device types.  Small mobile screens up to large HD desktop
 to Bootstrap.  Sites generated with this tool use the CDN for Bootstrap.
 
 The program takes input of an .shb file.
-Simply run .shb script files from a console like so: SimpleHtmlBuilder.exe script.shb
+Simply run .shb script files from a console like so: SpeedyHtmlBuilder.exe script.shb
 
 The structure of the website follows basic Bootstrap grid structure.
 
