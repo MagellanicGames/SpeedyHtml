@@ -27,29 +27,38 @@ This section will make a very basic example site.
 First line contains title and stylesheet.
 
 ```
-MyAwesomeWebsiteTitle,myUniqueStyleSheet.css
+My Awesome Website Title,Style.css
 ```
 To use the default stylesheet simply state the website title.
 
 ```
-MyAwesomeWebsiteTitle
+My Awesome Website Title
 ```
 ### step2 - Create a container
 
 ```
 addContainer;
 ```
+### Step3 - Add a heading
+```
+heading(text:My Awesome Website Title,class:red);
+```
 
-### Step3 - Add a row with a heading
+### Step4 - Add a sub heading
+
 ```
 rowStart;
-
-<center><h1>My Awesome Website</h1></center>
-
+<h3>My Article Title</h3>
 rowEnd;
 ```
 
-### Step4 - Add a row with a paragraph and padding above
+### Step5- Add an image
+
+```
+addImage(myimg.gif);
+```
+
+### Step6 - Add a row with a paragraph and padding above
 
 ```
 padding;
@@ -66,16 +75,15 @@ sophisticated and pretty.
 rowEnd;
 ```
 
-### Step5 - Add some more padding then a footer
+### Step7 - Add some more padding then a footer
 
 ```
 padding;
-addFooter;{email:myEmail@mail.com,date:01/07/1999,copy:Web Develop34}
+
+addFooter(email:myEmail@mail.com,date:01/07/1999,copy:Web Developer);
 ```
 
-
-### Step6 - Save with the .shb extension and run through Simple Html builder
-
+### Step8 - Save with the .shb extension and run through Simple Html builder
 
 ```
 SpeedyHtmlBuilder.exe websiteScript.shb
