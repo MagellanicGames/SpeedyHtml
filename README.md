@@ -41,15 +41,13 @@ addContainer;
 ```
 ### Step3 - Add a heading
 ```
-heading(text:My Awesome Website Title,class:red);
+heading(text:My Awesome Website Title,class:myCssClass);
 ```
 
 ### Step4 - Add a sub heading
 
 ```
-rowStart;
-<h3>My Article Title</h3>
-rowEnd;
+subHeading(text:My Article Title,class:myCssClass);
 ```
 
 ### Step5- Add an image
