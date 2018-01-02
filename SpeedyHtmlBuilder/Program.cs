@@ -68,6 +68,7 @@ namespace SpeedyHtmlBuilder
             string addFooter = "addFooter(";
             string addImage = "addImage(";
             string heading = "heading(";
+            string subHeading = "subHeading(";
 
 
             for (int i = 1; i < source.Count; i++)
@@ -166,6 +167,13 @@ namespace SpeedyHtmlBuilder
                     string text = StringUtils.SubString(line, "(text:", ",class:");
                     string cssClass = StringUtils.SubString(line, ",class:", ");");
                     page.AddHeading(text, cssClass);
+                }
+
+                if(line.Contains(subHeading))
+                {
+                    string text = StringUtils.SubString(line, "(text:", ",class:");
+                    string cssClass = StringUtils.SubString(line, ",class:", ");");
+                    page.AddSubHeading(text, cssClass);
                 }
             }
 

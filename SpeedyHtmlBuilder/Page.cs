@@ -172,6 +172,11 @@ namespace SpeedyHtmlBuilder
             AddRowToLastAddedContainer(StartTag("center") + StartTag("h1", cssClass) + text + EndTag("h1") + EndTag("center"));
         }
 
+        public void AddSubHeading(string text, string cssClass)
+        {
+            AddRowToLastAddedContainer(StartTag("h3", cssClass) + text + EndTag("h3") );
+        }
+
         public void AddImage(string imageName)
         {
             AddRowToLastAddedContainer(StartTag("img" + Attribute("src", imageName)));

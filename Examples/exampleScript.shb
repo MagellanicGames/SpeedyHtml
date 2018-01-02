@@ -1,16 +1,12 @@
-MyAwesomeWebsiteTitle
+My Awesome Website Title,Style.css
+
 addContainer;
-rowStart;
 
-<center><h1 id="blink">My Awsome Website</h1></center>
-
-rowEnd;
+heading(text:My Awesome Website,class:red);
 
 padding;
 
-rowStart;
-<h3>My Article Title</h3>
-rowEnd;
+subHeading(text:My Article Title,class:myCssClass);
 
 addImage(myimg.gif);
 
@@ -29,4 +25,4 @@ rowEnd;
 
 padding;
 
-addFooter;{email:myEmail@mail.com,date:01/07/1999,copy:Web Develop}
+addFooter(email:myEmail@mail.com,date:01/07/1999,copy:Web Develop);
