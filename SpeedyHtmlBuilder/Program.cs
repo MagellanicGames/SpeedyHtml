@@ -66,7 +66,7 @@ namespace SpeedyHtmlBuilder
             string htmlEnd = "htmlEnd;";
             string classProperties = "{class:";
             string addFooter = "addFooter;";
-
+            string addImage = "addImage(";
 
 
             for (int i = 1; i < source.Count; i++)
@@ -151,7 +151,17 @@ namespace SpeedyHtmlBuilder
                     page.AddFooter(email, date, copy);
                     continue;
                 }
+
+                if(line.Contains(addImage))
+                {
+                    string imageName = StringUtils.SubString(line, "addImage(", ");");
+                    page.AddImage(imageName);
+                    continue;
+
+                }
             }
+
+
 
             page.SaveToFile("index");
 

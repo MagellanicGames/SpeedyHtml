@@ -43,7 +43,7 @@ namespace SpeedyHtmlBuilder
             string data = "";
             if (!rawHtml)
             {
-                data = Page.StartTag("div" + Page.Property("class", classProperty)) + n;
+                data = Page.StartTag("div" + Page.Attribute("class", classProperty)) + n;
                 foreach (var row in mRows)
                 {
                     data += row.GetData();
@@ -85,7 +85,7 @@ namespace SpeedyHtmlBuilder
             mProperties = classProperties;
 
 
-            start = t + Page.StartTag("div" + Page.Property("class", "row"));
+            start = t + Page.StartTag("div" + Page.Attribute("class", "row"));
             this.content = content;
             end = t + Page.EndTag("div")+ "<!--End of Row-->" + n;
         }
@@ -100,7 +100,7 @@ namespace SpeedyHtmlBuilder
         {
             string center;
 
-            center = Page.StartTag("div" + Page.Property("class", mProperties + " col-lg-8 col-md-8 col-sm-12 col-xs-12"));
+            center = Page.StartTag("div" + Page.Attribute("class", mProperties + " col-lg-8 col-md-8 col-sm-12 col-xs-12"));
 
             string tx4 = t + t + t + t;
 
@@ -110,7 +110,7 @@ namespace SpeedyHtmlBuilder
 
         private string EdgeColumn()
         {
-            return Page.StartTag("div" + Page.Property("class", "col-lg-2 col-md-2")) + Page.EndTag("div");
+            return Page.StartTag("div" + Page.Attribute("class", "col-lg-2 col-md-2")) + Page.EndTag("div");
         }
 
 
@@ -138,12 +138,12 @@ namespace SpeedyHtmlBuilder
 
             data = "";
             data += StartTag("!DOCTYPE html") + n;
-            data += StartTag("html" + Property("lang", "en")) + n;
+            data += StartTag("html" + Attribute("lang", "en")) + n;
 
             GenerateHead(title, styleSheet);
 
             data += head + n;
-            data += StartTag("body" + Property("class", "bg")) + n;
+            data += StartTag("body" + Attribute("class", "bg")) + n;
 
         }
 
@@ -153,8 +153,8 @@ namespace SpeedyHtmlBuilder
             head += t + StartTag("head") + n;
             head += tx2 + Title(title) + n;
             head += tx2 + IconLink() + n;
-            head += tx2 + StartTag("meta" + Property("charset", "utf-8")) + n;
-            head += tx2 + StartTag("meta" + Property("name", "viewport") + Property("content", "width=device-width, initial-scale=1 maximum-scale=1 user-scalable=no")) + n;
+            head += tx2 + StartTag("meta" + Attribute("charset", "utf-8")) + n;
+            head += tx2 + StartTag("meta" + Attribute("name", "viewport") + Attribute("content", "width=device-width, initial-scale=1 maximum-scale=1 user-scalable=no")) + n;
             head += tx2 + link("stylesheet", styleSheet) + n;
             head += tx2 + link("stylesheet", "https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css") + n;
             head += tx2 + Script("https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js") + n;
@@ -165,6 +165,11 @@ namespace SpeedyHtmlBuilder
         public void AddRowToLastAddedContainer(string content, string classProperties = "")
         {
             mContainers[mContainers.Count - 1].AddRow(content, classProperties);
+        }
+
+        public void AddImage(string imageName)
+        {
+            AddRowToLastAddedContainer(StartTag("img" + Attribute("src", imageName)));
         }
 
         public void AddHtml(string html)
@@ -198,7 +203,7 @@ namespace SpeedyHtmlBuilder
             string result;
 
             if (id != "")
-                result = StartTag("center") + StartTag("h1" + Property("id", id), "red");
+                result = StartTag("center") + StartTag("h1" + Attribute("id", id), "red");
             else
                 result = StartTag("center") + StartTag("h1", "red");
 
@@ -226,7 +231,7 @@ namespace SpeedyHtmlBuilder
         {
             string result = "";
 
-            result += StartTag("a" + Property("href", url), classProperty) + innerHtml + EndTag("a");
+            result += StartTag("a" + Attribute("href", url), classProperty) + innerHtml + EndTag("a");
             return result;
         }
 
@@ -247,13 +252,13 @@ namespace SpeedyHtmlBuilder
 
         public static string Script(string src)
         {
-            return StartTag("script" + Property("src", src)) + EndTag("script");
+            return StartTag("script" + Attribute("src", src)) + EndTag("script");
         }
         public static string link(string rel, string href)
         {
-            return StartTag("link" + Property("rel", rel) + Property("href", href));
+            return StartTag("link" + Attribute("rel", rel) + Attribute("href", href));
         }
-        public static string Property(string name, string value)
+        public static string Attribute(string name, string value)
         {
             return " " + name + "=" + QuotedString(value) + " ";
         }
@@ -283,7 +288,7 @@ namespace SpeedyHtmlBuilder
             if (classProperty == "")
                 result = "<" + name + ">";
             else
-                result = "<" + name + Property("class", classProperty) + ">";
+                result = "<" + name + Attribute("class", classProperty) + ">";
 
             return result;
         }
