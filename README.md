@@ -133,6 +133,16 @@ padding();
 ```
 Does not require rowStart or rowEnd.
 
+## Footer
+
+Add a footer containing email, update date and copyright notice:
+
+```
+addFooter(email:email@mail.com,date:01/07/1999,copy:yourName);
+```
+
+Does not require a call to rowStart. Does need to be within a container.
+
 ## Adding Raw HTML
 
 This command is used for adding bare html to a site and will not be added to any containers.
