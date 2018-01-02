@@ -126,6 +126,7 @@ namespace SpeedyHtmlBuilder
         static string t = "\t";
 
         List<Container> mContainers;
+        List<string> mScripts;
 
         /// <summary>
         /// creates page up to title in body
@@ -135,6 +136,7 @@ namespace SpeedyHtmlBuilder
         public Page(string title, string styleSheet)
         {
             mContainers = new List<Container>();
+            mScripts = new List<string>();
 
             data = "";
             data += StartTag("!DOCTYPE html") + n;
@@ -167,24 +169,32 @@ namespace SpeedyHtmlBuilder
             mContainers[mContainers.Count - 1].AddRow(content, classProperties);
         }
 
+        public void AddScript(string line)
+        {
+            string src = StringUtils.SubString(line, "addScript(", ");");
+            mScripts.Add(Script(src));
+        }
+
         public void AddHeading(string line)
         {
             string text = StringUtils.SubString(line, "(text:", ",class:");
-            string cssClass = StringUtils.SubString(line, ",class:", ");");
-            AddRowToLastAddedContainer(StartTag("center") + StartTag("h1", cssClass) + text + EndTag("h1") + EndTag("center"));
+            string cssClass = StringUtils.SubString(line, ",class:", ",id:");
+            string id = StringUtils.SubString(line, ",id:", ");");
+            AddRowToLastAddedContainer(StartTag("center") + StartTag("h1" + Attribute("id", id), cssClass) + text + EndTag("h1") + EndTag("center"));
         }
 
         public void AddSubHeading(string line)
         {
             string text = StringUtils.SubString(line, "(text:", ",class:");
-            string cssClass = StringUtils.SubString(line, ",class:", ");");
-            AddRowToLastAddedContainer(StartTag("h3", cssClass) + text + EndTag("h3") );
+            string cssClass = StringUtils.SubString(line, ",class:", ",id:");
+            string id = StringUtils.SubString(line, ",id:", ");");
+            AddRowToLastAddedContainer(StartTag("h3" + Attribute("id",id), cssClass) + text + EndTag("h3") );
         }
 
         public void AddImage(string line)
         {
             string imageName = StringUtils.SubString(line, "addImage(", ");");
-            AddRowToLastAddedContainer(StartTag("img" + Attribute("src", imageName)));
+            AddRowToLastAddedContainer(StartTag("img" + Attribute("style","max-width:75%") + Attribute("src", imageName)));
         }
 
         public void AddImageCentered(string line)
@@ -203,9 +213,10 @@ namespace SpeedyHtmlBuilder
         {
             string email = StringUtils.SubString(line, "email:", ",date:");
             string date = StringUtils.SubString(line, ",date:", ",copy:");
-            string copy = StringUtils.SubString(line, ",copy:", ");");
+            string copy = StringUtils.SubString(line, ",copy:", ",class:");
+            string css = StringUtils.SubString(line, "class:", ");");
 
-            string footer = StartTag("footer") + StartTag("h6") + "Email: " + email + StartTag("br") + n;
+            string footer = StartTag("footer") + StartTag("h6" + Attribute("class",css)) + "Email: " + email + " " +AddMailIcon() + StartTag("br") + n;
             footer += "Last Updated: " + date + StartTag("br") + n;
             footer += "Copyright: " + copy + EndTag("h6") + n;
             footer += EndTag("footer") + n;
@@ -270,7 +281,7 @@ namespace SpeedyHtmlBuilder
             return 0;
         }
 
-        private string AddIcon()
+        private string AddMailIcon()
         {
             return StartTag("span", "glyphicon glyphicon-envelope") + EndTag("span");
         }
@@ -313,7 +324,7 @@ namespace SpeedyHtmlBuilder
         }       
 
         private void CloseBodyHtml()
-        {
+        {         
             data += EndTag("body") + n;
             data += EndTag("html");
         }
@@ -380,9 +391,22 @@ namespace SpeedyHtmlBuilder
 
         public void SaveToFile(string pageName)
         {
+            mContainers.Add(new Container());
+            string content = "";
+
+            content += StartTag("p" + Attribute("style", "font-size:50%"));
+            content += "Generated with SpeedyHtml.";
+            content += EndTag("p");
+            AddRowToLastAddedContainer(content);
+
             foreach (var container in mContainers)
             {
                 data += container.GetData();
+            }
+
+            foreach(var s in mScripts)
+            {
+                data += s + n;
             }
             CloseBodyHtml();
             File.WriteAllText(pageName + ".html", data);

@@ -67,6 +67,7 @@ namespace SpeedyHtmlBuilder
             string heading = "heading(";
             string subHeading = "subHeading(";
             string addImageCentered = "addImageCentered(";
+            string addScript = "addScript(";
 
             for(int i = 0; i < source.Count;i++)
             {
@@ -108,22 +109,31 @@ namespace SpeedyHtmlBuilder
 
                 if(line.Contains(heading))
                 {                   
-                    page.AddHeading(line);                    
+                    page.AddHeading(line);
+                    continue;
                 }
 
                 if(line.Contains(subHeading))
                 {                   
                     page.AddSubHeading(line);
+                    continue;
                 }
 
                 if(line.Contains(addImageCentered))
                 {                   
                     page.AddImageCentered(line);
+                    continue;
                 }
 
                 if (line.Contains(rowStart))
                 {
                     page.RowStart(source, i);
+                    continue;
+                }
+
+                if(line.Contains(addScript))
+                {
+                    page.AddScript(line);
                     continue;
                 }
 
