@@ -167,6 +167,11 @@ namespace SpeedyHtmlBuilder
             mContainers[mContainers.Count - 1].AddRow(content, classProperties);
         }
 
+        public void AddHeading(string text,string cssClass)
+        {
+            AddRowToLastAddedContainer(StartTag("center") + StartTag("h1", cssClass) + text + EndTag("h1") + EndTag("center"));
+        }
+
         public void AddImage(string imageName)
         {
             AddRowToLastAddedContainer(StartTag("img" + Attribute("src", imageName)));

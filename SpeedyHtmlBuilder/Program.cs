@@ -65,8 +65,9 @@ namespace SpeedyHtmlBuilder
             string htmlStart = "htmlStart;";
             string htmlEnd = "htmlEnd;";
             string classProperties = "{class:";
-            string addFooter = "addFooter;";
+            string addFooter = "addFooter(";
             string addImage = "addImage(";
+            string heading = "heading(";
 
 
             for (int i = 1; i < source.Count; i++)
@@ -146,7 +147,7 @@ namespace SpeedyHtmlBuilder
                 {
                     string email = StringUtils.SubString(source[i], "email:", ",date:");
                     string date = StringUtils.SubString(source[i], ",date:", ",copy:");
-                    string copy = StringUtils.SubString(source[i], ",copy:", "}");
+                    string copy = StringUtils.SubString(source[i], ",copy:", ");");
 
                     page.AddFooter(email, date, copy);
                     continue;
@@ -158,6 +159,13 @@ namespace SpeedyHtmlBuilder
                     page.AddImage(imageName);
                     continue;
 
+                }
+
+                if(line.Contains(heading))
+                {
+                    string text = StringUtils.SubString(line, "(text:", ",class:");
+                    string cssClass = StringUtils.SubString(line, ",class:", ");");
+                    page.AddHeading(text, cssClass);
                 }
             }
 
