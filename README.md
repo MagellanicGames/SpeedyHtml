@@ -48,13 +48,13 @@ addContainer;
 ```
 ### Step3 - Add a heading
 ```
-heading(text:My Awesome Website Heading,class:myCssClass);
+heading(text:My Awesome Website Heading,class:myCssClass,id:);
 ```
 
 ### Step4 - Add a sub heading
 
 ```
-subHeading(text:My Article Title,class:myCssClass);
+subHeading(text:My Article Title,class:myCssClass,id:);
 ```
 
 ### Step5- Add an image
@@ -85,7 +85,7 @@ rowEnd;
 ```
 padding;
 
-addFooter(email:myEmail@mail.com,date:01/07/1999,copy:Web Developer);
+addFooter(email:myEmail@mail.com,date:01/07/1999,copy:Web Developer,class:);
 ```
 
 ### Step8 - Save with the .shb extension and run through Simple Html builder
