@@ -71,6 +71,8 @@ namespace SpeedyHtmlBuilder
 			string navBarStart = "navBarStart(";
 			string navBarEnd = "navBarEnd(";
 			string navLink = "navLink(";
+			string navLinkDropdown = "navDropdown(";
+			string navLinkDropdownEnd = "navDropdownEnd()";
 
 			for(int i = 0; i < source.Count;i++)
 			{
@@ -143,6 +145,18 @@ namespace SpeedyHtmlBuilder
 				if(line.Contains(navBarStart))
 				{					
 					page.NavBar(line);
+					continue;
+				}
+
+				if(line.Contains(navLinkDropdown))
+				{
+					page.NavLinkDropdown(line);
+					continue;
+				}
+
+				if(line.Contains(navLinkDropdownEnd))
+				{
+					page.NavLinkDropdownEnd();
 					continue;
 				}
 

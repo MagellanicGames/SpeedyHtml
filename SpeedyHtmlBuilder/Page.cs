@@ -226,9 +226,25 @@ namespace SpeedyHtmlBuilder
 			string link = StringUtils.SubString(line,",link:",");");
 			string html = "";
 			html += StartTag("li");
-			html += A(name,link,Attribute("class","navLink"));
+			html += Link(name,link,Attribute("class","navLink"));
 			html += EndTag("li");
 			AddHtml(html);
+		}
+
+		public void NavLinkDropdown(string line)
+		{
+			string title = StringUtils.SubString(line,"navDropdown(text:",");");
+			string html = "";
+			html += StartTag("li" + Attribute("class","dropdown"));
+			string innerHtml = title + StartTag("span" + Attribute("class","caret")) + EndTag("span");
+			html += Link(innerHtml,"#",Attribute("class","navLink") + Attribute("data-toggle","dropdown"));
+			html += StartTag("ul" + Attribute("class","dropdown-menu"));
+			AddHtml(html);
+		}
+
+		public void NavLinkDropdownEnd()
+		{
+			AddHtml(EndTag("ul") + EndTag("li"));
 		}
 
 		public void NavBarEnd()
@@ -372,7 +388,12 @@ namespace SpeedyHtmlBuilder
 
 			result += StartTag("a" + Attribute("href", url), classProperty) + innerHtml + EndTag("a");
 			return result;
-		}       
+		}
+
+		public static string Link(string innerHtml,string url,string attributes)
+		{
+			return StartTag("a" + attributes + Attribute("href",url)) + innerHtml + EndTag("a");
+		}
 
 		private void CloseBodyHtml()
 		{         
