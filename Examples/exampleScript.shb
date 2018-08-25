@@ -2,13 +2,16 @@ My Awesome Website Title,Style.css
 
 addContainer;
 
-heading(text:My Awesome Website,class:red);
+padding;
+
+heading(text:My Awesome Website,class:red,id:);
 
 padding;
 
-subHeading(text:My Article Title,class:myCssClass);
+subHeading(text:My Article Title,class:myCssClass,id:);
 
 addImage(myimg.gif);
+addImageCentered(myimg.gif);
 
 rowStart;
 
@@ -25,4 +28,9 @@ rowEnd;
 
 padding;
 
-addFooter(email:myEmail@mail.com,date:01/07/1999,copy:Web Develop);
+navBarStart(text:website,home:#section);
+navLink(text:link1,link:exampleScript.html);
+navLink(text:link2,link:exampleScript.html);
+navLink(text:link3,link:exampleScript.html);
+navLink(text:link4,link:exampleScript.html);
+navBarEnd();
