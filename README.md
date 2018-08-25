@@ -151,7 +151,7 @@ Does not require rowStart or rowEnd.
 ## Navigation Bar
 
 ```
-navBarStart(text:Title,home:#topOfPage);
+navBarStart(text:Title,home:index.html#topOfPage);
   navLink(text:My Other Page,link:otherPage.html);
 navBarEnd();
 ```
@@ -159,7 +159,7 @@ navBarEnd();
 ## Navigation Bar with Dropdown
 
 ```
-navBarStart(text:Title,home:#topOfPage);
+navBarStart(text:Title,home:index.html#topOfPage);
   navLink(text:My Other Page,link:otherPage.html);
   navDropdown(text:Some more links);
     navLink(text:Another link,link:coolPage.html);
