@@ -73,9 +73,21 @@ namespace SpeedyHtmlBuilder
 			string navLink = "navLink(";
 			string navLinkDropdown = "navDropdown(";
 			string navLinkDropdownEnd = "navDropdownEnd()";
+			string codeStart = "codeStart;";
+			string codeEnd = "codeEnd;";
 
+			bool codeBlock = false;
 			for(int i = 0; i < source.Count;i++)
 			{
+				string line = source[i];
+				if(line == codeStart)
+					codeBlock = true;
+				else if(line == codeEnd)
+					codeBlock = false;
+
+				if(codeBlock)
+					continue;
+				
 				if (String.IsNullOrWhiteSpace(source[i]))
 				{
 					source.RemoveAt(i);
@@ -172,6 +184,25 @@ namespace SpeedyHtmlBuilder
 					page.NavBarEnd();
 					continue;
 				}
+
+				if(line.Contains(codeStart))
+				{
+					List<string> code = new List<string>();
+					i++;
+					while(source[i].Contains(codeEnd) == false)
+					{
+						code.Add(source[i]);
+						i++;
+						if (i > source.Count - 1)
+						{
+							Console.WriteLine("Hanging codeStart, no codeEnd found.");
+							break;
+						}
+					}
+					page.CodeStart(code);
+					continue;
+				}
+				
 
 				if (line == htmlStart)
 				{

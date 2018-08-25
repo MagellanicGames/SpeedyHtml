@@ -269,7 +269,114 @@ namespace SpeedyHtmlBuilder
 			return result;
 		}
 
+		public void CodeStart(List<string> code)
+		{
+			string html = "";
+			html += "<div class=\"container-fluid\" >	<div class=\"row\" ><div class=\"col-lg-2 col-md-2\" ></div><div class=\" col-lg-8 col-md-8 col-sm-12 col-xs-12\" >";
+			html += "<pre class=\"code\"> <code class=\"csharp whiteText\">";
+
+			foreach(var line in code)
+			{
+				if(line.Contains("codeBasic(type:"))
+					html += CodeBasic(line);
+				else if(line.Contains("codeBasicNonNum(type:"))
+					html += CodeBasicNonNum(line);
+				else if(line.Contains("codeClass(type:"))
+					html += CodeClass(line);
+				else if(line.Contains("codeClassNew(type:"))
+					html += CodeClassNew(line);
+				else if(line.Contains("codeString(name:"))
+					html += CodeString(line);
+				else if(String.IsNullOrWhiteSpace(line))
+					html += "\n";
+				else
+					html += line + "\n";
+			}
+
+			html += "</code> </pre> </div> </div>";
+			AddHtml(html);
+		}
+
+		private string CodeBasic(string line)
+		{
+			string type = StringUtils.SubString(line,"codeBasic(type:",",name:");
+			string name = StringUtils.SubString(line,"name:",",value:");
+			string value = StringUtils.SubString(line,"value:",");");
+
+			string code = "";
+			if (type != "")
+				code = Span(type,"code-basic") + " ";
+			code += name;
+			if(value != "")
+				code += " = " + Span(value,"code-num");
+			code += ";\n";
+			return code;
+		}	
 		
+			private string CodeBasicNonNum(string line)
+		{
+			string type = StringUtils.SubString(line,"codeBasicNonNum(type:",",name:");
+			string name = StringUtils.SubString(line,"name:",",value:");
+			string value = StringUtils.SubString(line,"value:",");");
+
+			string code = "";
+			if (type != "")
+				code = Span(type,"code-basic") + " ";
+			code += name;
+			if(value != "")
+				code += " = " + value;
+			code += ";\n";
+			return code;
+		}		
+
+		private string CodeClass(string line)
+		{
+			string type = StringUtils.SubString(line,"codeClass(type:",",name:");
+			string name = StringUtils.SubString(line,"name:",",value:");
+			string value = StringUtils.SubString(line,"value:",");");
+
+			string code = "";
+			if (type != "")
+				code = Span(type,"code-class") + " ";
+			code += name;
+			if(value != "")
+				code += " = " + value;
+			code += ";\n";
+			return code;
+		}
+
+		private string CodeClassNew(string line)
+		{
+			string type = StringUtils.SubString(line,"codeClassNew(type:",",name:");
+			string name = StringUtils.SubString(line,"name:",",value:");
+			string value = StringUtils.SubString(line,"value:",");");
+
+			string code = "";
+			if (type != "")
+				code = Span(type,"code-class") + " ";
+			code += name;
+			if(value != "")
+				code += " = " + Span("new","code-basic") + " " + Span(type,"code-class") + value;
+			code += ";\n";
+			return code;
+		}
+
+		private string CodeString(string line)
+		{
+			string name = StringUtils.SubString(line,"name:",",value:");
+			string value = StringUtils.SubString(line,"value:",");");
+
+			string code = Span("string","code-basic") + " " + name;
+			if(value != "")
+				code += " = " + Span("\"" + value + "\"","code-string");
+			code += ";\n";
+			return code;
+		}
+
+		public string Span(string content, string cssClass)
+		{
+			return "<span class=" + cssClass + ">" + content + "</span>";
+		}
 
 		public void AddHtml(string html)
 		{
@@ -308,7 +415,7 @@ namespace SpeedyHtmlBuilder
 			AddRowToLastAddedContainer(StartTag("div", "row padding") + EndTag("div"));
 		}
 
-		public void RowStart(List<string> script, int rowStartPos)
+		public void RowStart(List<string> script, int rowStartPos,bool removeEmptyLines = true)
 		{
 			string properties = "";
 			string rowStartLine = script[rowStartPos];
@@ -347,6 +454,7 @@ namespace SpeedyHtmlBuilder
 			}
 			return 0;
 		}
+
 
 		private string AddMailIcon()
 		{
