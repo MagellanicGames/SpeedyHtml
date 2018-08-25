@@ -215,7 +215,7 @@ namespace SpeedyHtmlBuilder
 
 			result += _NavBarHeader(title, headerLink);
 
-			result += StartTag("div" + Attribute("class","collapse navbar-collapse blueText") + Attribute("id","myNavBar")) +n;
+			result += StartTag("div" + Attribute("class","collapse navbar-collapse blueText") + Attribute("id","myNavbar")) +n;
 			result += StartTag("ul" + Attribute("class","nav navbar-nav"));
 			AddHtml(result);
 		}
