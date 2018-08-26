@@ -290,11 +290,78 @@ namespace SpeedyHtmlBuilder
 				else if(String.IsNullOrWhiteSpace(line))
 					html += "\n";
 				else
-					html += line + "\n";
+					html += ParseCode(line);
 			}
 
 			html += "</code> </pre> </div> </div>";
 			AddHtml(html);
+		}
+
+		static string basic_span = "<span class=code-basic>";
+		static string class_span = "<span class=code-class>";
+		static string string_span = "<span class=code-string>";
+		private string ParseCode(string line)
+		{
+			line = line.Replace(" new ",basic_span + " new " + EndTag("span"));
+			line = line.Replace("float ",basic_span + "float " + EndTag("span"));
+			line = line.Replace("int ",basic_span + "int " + EndTag("span"));
+			line = line.Replace("var ",basic_span + "var " + EndTag("span"));
+			line = line.Replace(" out ",basic_span + " out " + EndTag("span"));
+			line = line.Replace(" base",basic_span + "base" + EndTag("span"));
+			line = line.Replace("typeof",basic_span + "typeof" + EndTag("span"));
+			line = line.Replace("BufferUsage",basic_span + "BufferUsage" + EndTag("span"));
+			line = line.Replace(" in ",basic_span + " in " + EndTag("span"));
+			line = line.Replace("protected",basic_span + "protected" + EndTag("span"));
+			line = line.Replace("override",basic_span + "override" + EndTag("span"));
+			line = line.Replace("private",basic_span + "private" + EndTag("span"));
+			line = line.Replace("public",basic_span + "public" + EndTag("span"));
+			line = line.Replace("foreach",basic_span + "foreach" + EndTag("span"));
+			line = line.Replace("void ",basic_span + "void " + EndTag("span"));
+			line = line.Replace(" this",basic_span + "this " + EndTag("span"));
+			line = line.Replace("namespace",basic_span + "namespace" + EndTag("span"));
+			line = line.Replace(" class ",basic_span + " class " + EndTag("span"));
+			line = line.Replace("float4x4",basic_span + "float4x4" + EndTag("span"));
+			line = line.Replace("float4 ",basic_span + "float4 " + EndTag("span"));
+			line = line.Replace("float2 ",basic_span + "float2 " + EndTag("span"));
+			line = line.Replace("struct ",basic_span + "struct " + EndTag("span"));
+			line = line.Replace("return ",basic_span + "return " + EndTag("span"));
+			line = line.Replace("technique ",basic_span + "technique " + EndTag("span"));
+			line = line.Replace("basic ",basic_span + "basic " + EndTag("span"));
+			line = line.Replace(" compile ",basic_span + " compile " + EndTag("span"));
+			line = line.Replace(" VertexShader ",basic_span + " VertexShader " + EndTag("span"));
+			line = line.Replace(" PixelShader ",basic_span + " PixelShader " + EndTag("span"));
+			line = line.Replace("SamplerState ",basic_span + "SamplerState " + EndTag("span"));
+			line = line.Replace(" if ",basic_span + " if " + EndTag("span"));
+			line = line.Replace(" pass ",basic_span + " pass " + EndTag("span"));
+
+			line = line.Replace("Vector2",class_span + "Vector2" + EndTag("span"));
+			line = line.Replace("Vector3",class_span + "Vector3" + EndTag("span"));
+			line = line.Replace("VertexPositionNormalTexture",class_span + "VertexPositionNormalTexture" + EndTag("span"));
+			line = line.Replace("Matrix",class_span + "Matrix" + EndTag("span"));
+			line = line.Replace("Texture2D",class_span + "Texture2D" + EndTag("span"));
+			line = line.Replace(" VertexBuffer",class_span + "VertexBuffer" + EndTag("span"));
+			line = line.Replace(" GameTime",class_span + "GameTime" + EndTag("span"));
+			line = line.Replace("Color",class_span + "Color" + EndTag("span"));
+			line = line.Replace(" Effect",class_span + "Effect" + EndTag("span"));
+			line = line.Replace("EffectPass",class_span + "EffectPass" + EndTag("span"));
+			line = line.Replace("GraphicsDeviceManager",class_span + "GraphicsDeviceManager" + EndTag("span"));
+			line = line.Replace(" Content",class_span + "Content" + EndTag("span"));
+			line = line.Replace(" Game ",class_span + "Game" + EndTag("span"));
+			line = line.Replace(" Game1",class_span + "Game1" + EndTag("span"));
+			line = line.Replace("Keyboard",class_span + "Keyboard" + EndTag("span"));
+			line = line.Replace("SoundEffect ",class_span + "SoundEffect" + EndTag("span"));
+			line = line.Replace("SoundEffectInstance",class_span + "SoundEffectInstance" + EndTag("span"));
+			line = line.Replace("SpriteBatch ",class_span + "SpriteBatch " + EndTag("span"));
+
+			if(line.Contains("\""))
+			{
+				int start = line.IndexOf('\"');
+				int end = line.LastIndexOf('\"') + 1;
+				string strToColor = line.Substring(start,end - start);
+				line = line.Replace(strToColor,string_span + strToColor + EndTag("span"));
+			}
+
+			return line +"\n";
 		}
 
 		private string CodeBasic(string line)
