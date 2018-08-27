@@ -45,8 +45,13 @@ namespace SpeedyHtmlBuilder
 			line = line.Replace(" VertexShader ",basic_span + " VertexShader " + HTML.EndTag("span"));
 			line = line.Replace(" PixelShader ",basic_span + " PixelShader " + HTML.EndTag("span"));
 			line = line.Replace("SamplerState ",basic_span + "SamplerState " + HTML.EndTag("span"));
-			line = line.Replace(" if ",basic_span + " if " + HTML.EndTag("span"));
+			line = line.Replace(" if ",basic_span + "if " + HTML.EndTag("span"));
 			line = line.Replace(" pass ",basic_span + " pass " + HTML.EndTag("span"));
+			line = line.Replace(" bool ",basic_span + "bool" + HTML.EndTag("span"));
+			line = line.Replace(" static ",basic_span + "static" + HTML.EndTag("span"));
+			line = line.Replace(" for ",basic_span + "for" + HTML.EndTag("span"));
+			line = line.Replace("true",basic_span + "true" + HTML.EndTag("span"));
+			line = line.Replace("false",basic_span + "false" + HTML.EndTag("span"));
 
 			line = line.Replace("Vector2",class_span + "Vector2" + HTML.EndTag("span"));
 			line = line.Replace("Vector3",class_span + "Vector3" + HTML.EndTag("span"));
@@ -63,10 +68,14 @@ namespace SpeedyHtmlBuilder
 			line = line.Replace(" Content",class_span + "Content" + HTML.EndTag("span"));
 			line = line.Replace(" Game ",class_span + "Game" + HTML.EndTag("span"));
 			line = line.Replace(" Game1",class_span + "Game1" + HTML.EndTag("span"));
+			line = line.Replace("KeyboardState",class_span + "KeyboardState" + HTML.EndTag("span"));
 			line = line.Replace("Keyboard",class_span + "Keyboard" + HTML.EndTag("span"));
+			line = line.Replace("KeyboardState",class_span + "KeyboardState" + HTML.EndTag("span"));
 			line = line.Replace("SoundEffect ",class_span + "SoundEffect" + HTML.EndTag("span"));
 			line = line.Replace("SoundEffectInstance",class_span + "SoundEffectInstance" + HTML.EndTag("span"));
 			line = line.Replace("SpriteBatch ",class_span + "SpriteBatch " + HTML.EndTag("span"));
+			line = line.Replace(" List ",class_span + "List" + HTML.EndTag("span"));
+			line = line.Replace(" Controls ",class_span + "Controls" + HTML.EndTag("span"));
 
 			if(line.Contains("\""))
 			{

@@ -25,13 +25,13 @@ namespace SpeedyHtmlBuilder
 
 			start = t + HTML.StartTag("div" + HTML.Attribute("class", "row"));
 			this.content = content;
-			end = t + HTML.EndTag("div")+ "<!--End of Row-->" + n;
+			end = t + HTML.EndTag("div")+ "<!--End of Row-->" + n + n;
 		}
 
 		public string GetData()
 		{
 
-			return start + t + t + EdgeColumn() + n + t + t + t +  CenterColumn() + t + t+ n + EdgeColumn() + n + end;
+			return start + t + t + EdgeColumn() + n + t + t + t +  CenterColumn() + n + t + t+ EdgeColumn() + end;
 		}
 
 		private string CenterColumn()
