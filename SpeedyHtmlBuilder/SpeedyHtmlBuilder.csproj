@@ -43,9 +43,15 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Container.cs" />
+    <Compile Include="Footer.cs" />
+    <Compile Include="HTML.cs" />
+    <Compile Include="Navbar.cs" />
     <Compile Include="Page.cs" />
+    <Compile Include="CodeCS.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Row.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />

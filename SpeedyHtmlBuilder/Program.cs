@@ -156,7 +156,7 @@ namespace SpeedyHtmlBuilder
 
 				if(line.Contains(navBarStart))
 				{					
-					page.NavBar(line);
+					page.NavigationBar(line);
 					continue;
 				}
 
@@ -199,7 +199,7 @@ namespace SpeedyHtmlBuilder
 							break;
 						}
 					}
-					page.CodeStart(code);
+					page.Code(code);
 					continue;
 				}
 				

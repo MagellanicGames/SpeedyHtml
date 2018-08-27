@@ -28,6 +28,31 @@ rowEnd;
 
 padding;
 
+codeStart;
+// TODO: Add your initialization logic here
+			Matrix.CreateOrthographic(screenWidth, screenHeight, -1000.0f, 1000.0f, out Projection);
+			View = Matrix.CreateLookAt( new Vector3(0,0,-100.0f),Vector3.Forward, new Vector3(0,1,0));
+
+			float width = 0.5f;
+			float height = 0.5f;
+			float repetitions = 1f;
+
+			var spriteVertices = new VertexPositionNormalTexture[6];
+
+			spriteVertices[0] = new VertexPositionNormalTexture( new Vector3(-width,height,0f),	Vector3.Forward, new Vector2(0,0));
+			spriteVertices[1] = new VertexPositionNormalTexture( new Vector3(-width,-height,0f),	Vector3.Forward, new Vector2(0,repetitions));
+			spriteVertices[2] = new VertexPositionNormalTexture( new Vector3(width,-height,0f),	Vector3.Forward, new Vector2(repetitions,repetitions));
+			spriteVertices[3] = new VertexPositionNormalTexture( new Vector3(width,-height,0f),	Vector3.Forward, new Vector2(repetitions,repetitions));
+			spriteVertices[4] = new VertexPositionNormalTexture( new Vector3(width,height,0f),	Vector3.Forward, new Vector2(repetitions,0));
+			spriteVertices[5] = new VertexPositionNormalTexture( new Vector3(-width,height,0f),	Vector3.Forward, new Vector2(0,0));
+
+			spriteVertexBuffer = new VertexBuffer(graphics.GraphicsDevice,typeof(VertexPositionNormalTexture),6,BufferUsage.WriteOnly);
+			spriteVertexBuffer.Name = "Sprite Vertex Buffer";
+			spriteVertexBuffer.SetData<VertexPositionNormalTexture>(spriteVertices);
+
+			 base.Initialize();
+codeEnd;
+
 navBarStart(text:website,home:#section);
 	navLink(text:link1,link:exampleScript.html);
 	navLink(text:link2,link:exampleScript.html);
