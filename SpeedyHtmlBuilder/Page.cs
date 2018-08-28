@@ -169,14 +169,16 @@ namespace SpeedyHtmlBuilder
 
 		public void NavBarEnd()
 		{
-			AddHtml(HTML.EndTag("ul") + HTML.EndTag("div") + HTML.EndTag("nav"));
+			AddHtml(HTML.EndTag("ul") + n + HTML.EndTag("div") + n + HTML.EndTag("nav"));
 		}	
 
 		public void Code(List<string> code)
 		{
 			string html = "";
-			html += "<div class=\"container-fluid\" >	<div class=\"row\" ><div class=\"col-lg-2 col-md-2\" ></div><div class=\" col-lg-8 col-md-8 col-sm-12 col-xs-12\" >";
-			html += "<pre class=\"code\"> <code class=\"csharp whiteText\">";
+			html += "<div class=\"container-fluid\">" +n;
+			html += "\t<div class=\"row\" ><div class=\"col-lg-2 col-md-2\" ></div>" +n;
+			html += "\t\t<div class=\" col-lg-8 col-md-8 col-sm-12 col-xs-12\" >" + n;
+			html += "\t\t\t<pre class=\"code\"> \n\t\t\t\t <code class=\"csharp whiteText\">\n";
 
 			foreach(var line in code)
 			{
@@ -186,7 +188,7 @@ namespace SpeedyHtmlBuilder
 					html += CodeCS.Parse(line);
 			}
 
-			html += "</code> </pre> </div> </div>";
+			html += "\t\t\t\t</code>\n\t\t\t</pre>\n\t\t</div>\n\t</div>\n</div>";
 			AddHtml(html);
 		}	
 
