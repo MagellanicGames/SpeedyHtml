@@ -113,7 +113,7 @@ namespace SpeedyHtmlBuilder
 
 		public void AddScript(string line)
 		{
-			string src = StringUtils.SubString(line, "addHTML.Script(", ");");
+			string src = StringUtils.SubString(line, "addScript(", ");");
 			mScripts.Add(HTML.Script(src));
 		}
 
