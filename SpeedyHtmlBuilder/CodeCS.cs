@@ -52,6 +52,7 @@ namespace SpeedyHtmlBuilder
 			line = line.Replace(" for ",basic_span + "for" + HTML.EndTag("span"));
 			line = line.Replace("true",basic_span + "true" + HTML.EndTag("span"));
 			line = line.Replace("false",basic_span + "false" + HTML.EndTag("span"));
+			line = line.Replace(" using ",basic_span + "using " + HTML.EndTag("span"));
 
 			line = line.Replace("Vector2",class_span + "Vector2" + HTML.EndTag("span"));
 			line = line.Replace("Vector3",class_span + "Vector3" + HTML.EndTag("span"));
@@ -76,6 +77,8 @@ namespace SpeedyHtmlBuilder
 			line = line.Replace("SpriteBatch ",class_span + "SpriteBatch " + HTML.EndTag("span"));
 			line = line.Replace(" List ",class_span + "List" + HTML.EndTag("span"));
 			line = line.Replace(" Controls ",class_span + "Controls" + HTML.EndTag("span"));
+			line = line.Replace(" Camera ",class_span + "Camera" + HTML.EndTag("span"));
+			line = line.Replace(" BasicEffect ",class_span + "BasicEffect" + HTML.EndTag("span"));
 
 			if(line.Contains("\""))
 			{
