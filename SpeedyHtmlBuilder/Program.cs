@@ -76,6 +76,10 @@ namespace SpeedyHtmlBuilder
 			string codeStart = "codeStart;";
 			string codeEnd = "codeEnd;";
 
+			string importPartial = "importPartial(";
+
+			
+
 			bool codeBlock = false;
 			for(int i = 0; i < source.Count;i++)
 			{
@@ -97,7 +101,15 @@ namespace SpeedyHtmlBuilder
 
 			for (int i = 1; i < source.Count; i++)
 			{
-				var line = source[i];            
+				var line = source[i];
+
+				if(line.Contains(importPartial))
+				{
+					List<string> importedSource = Partial.ImportPartial(line);
+					if(importedSource.Count > 0)
+						source.InsertRange(i + 1,importedSource);
+					continue;
+				}
 
 				if (line.Contains(addContainer))
 				{
