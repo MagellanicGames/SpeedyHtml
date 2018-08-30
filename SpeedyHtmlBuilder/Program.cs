@@ -73,6 +73,8 @@ namespace SpeedyHtmlBuilder
 			string navLink = "navLink(";
 			string navLinkDropdown = "navDropdown(";
 			string navLinkDropdownEnd = "navDropdownEnd()";
+			string navSubmenuDropdown = "navSubmenuDropdownStart(";
+			string navSubmenuDowndownEnd = "navSubmenuDropdownEnd()";
 			string codeStart = "codeStart;";
 			string codeEnd = "codeEnd;";
 
@@ -190,6 +192,17 @@ namespace SpeedyHtmlBuilder
 					continue;
 				}
 
+				if(line.Contains(navSubmenuDropdown))
+				{
+					page.NavSubmenuDropdownStart(line);
+					continue;
+				}
+
+				if(line.Contains(navSubmenuDowndownEnd))
+				{
+					page.NavSubmenuDropdownEnd();
+					continue;
+				}
 
 				if(line.Contains(navBarEnd))
 				{

@@ -167,6 +167,16 @@ namespace SpeedyHtmlBuilder
 			AddHtml(HTML.EndTag("ul") + HTML.EndTag("li"));
 		}
 
+		public void NavSubmenuDropdownStart(string line)
+		{
+			AddHtml(Navbar.SubmenuDropdown(line));
+		}
+
+		public void NavSubmenuDropdownEnd()
+		{
+			AddHtml(HTML.EndTag("ul") + HTML.EndTag("li"));
+		}
+
 		public void NavBarEnd()
 		{
 			AddHtml(HTML.EndTag("ul") + n + HTML.EndTag("div") + n + HTML.EndTag("nav"));
