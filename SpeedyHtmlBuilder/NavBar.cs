@@ -44,7 +44,7 @@ namespace SpeedyHtmlBuilder
 			string html = "";
 			html += HTML.StartTag("li" + HTML.Attribute("class","dropdown"));
 			string innerHtml = title + HTML.StartTag("span" + HTML.Attribute("class","caret")) + HTML.EndTag("span");
-			html += HTML.Link(innerHtml,"#",HTML.Attribute("class","navLink") + HTML.Attribute("data-toggle","dropdown"));
+			html += HTML.Link(innerHtml,"#",HTML.Attribute("class","menu") + HTML.Attribute("data-toggle","dropdown"));
 			html += HTML.StartTag("ul" + HTML.Attribute("class","dropdown-menu"));
 			
 			return html;
@@ -56,7 +56,7 @@ namespace SpeedyHtmlBuilder
 			string html = "";
 			html += HTML.StartTag("li" + HTML.Attribute("class","dropdown-submenu"));
 			string innerHtml = title + HTML.StartTag("span" + HTML.Attribute("class","caret")) + HTML.EndTag("span");
-			html += HTML.Link(innerHtml,"",HTML.Attribute("class","submenu navLink"));
+			html += HTML.Link(innerHtml,"",HTML.Attribute("class","submenu"));
 			html += HTML.StartTag("ul" + HTML.Attribute("class","dropdown-menu"));
 			return html;
 		}
