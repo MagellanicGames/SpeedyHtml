@@ -53,6 +53,7 @@ namespace SpeedyHtmlBuilder
 			line = line.Replace("true",basic_span + "true" + HTML.EndTag("span"));
 			line = line.Replace("false",basic_span + "false" + HTML.EndTag("span"));
 			line = line.Replace(" using ",basic_span + "using " + HTML.EndTag("span"));
+			line = line.Replace(" string ",basic_span + "string" + HTML.EndTag("span"));
 
 			line = line.Replace("Vector2",class_span + "Vector2" + HTML.EndTag("span"));
 			line = line.Replace("Vector3",class_span + "Vector3" + HTML.EndTag("span"));
@@ -66,7 +67,8 @@ namespace SpeedyHtmlBuilder
 			line = line.Replace("EffectPass",class_span + "EffectPass" + HTML.EndTag("span"));
 			line = line.Replace("GraphicsDeviceManager",class_span + "GraphicsDeviceManager" + HTML.EndTag("span"));
 			line = line.Replace("GraphicsDevice ",class_span + "GraphicsDevice" + HTML.EndTag("span"));
-			line = line.Replace(" Content",class_span + "Content" + HTML.EndTag("span"));
+			line = line.Replace(" Content ",class_span + "Content" + HTML.EndTag("span"));
+			line = line.Replace(" ContentManager ",class_span + "ContentManager" + HTML.EndTag("span"));
 			line = line.Replace(" Game ",class_span + "Game" + HTML.EndTag("span"));
 			line = line.Replace(" Game1",class_span + "Game1" + HTML.EndTag("span"));
 			line = line.Replace("KeyboardState",class_span + "KeyboardState" + HTML.EndTag("span"));
@@ -79,6 +81,11 @@ namespace SpeedyHtmlBuilder
 			line = line.Replace(" Controls ",class_span + "Controls" + HTML.EndTag("span"));
 			line = line.Replace(" Camera ",class_span + "Camera" + HTML.EndTag("span"));
 			line = line.Replace(" BasicEffect ",class_span + "BasicEffect" + HTML.EndTag("span"));
+			line = line.Replace(" DirectoryInfo ",class_span + "DirectoryInfo" + HTML.EndTag("span"));
+			line = line.Replace(" Directory ",class_span + "Directory" + HTML.EndTag("span"));
+			line = line.Replace(" FileInfo ",class_span + "FileInfo" + HTML.EndTag("span"));
+			line = line.Replace(" Dictionary ",class_span + "Dictionary" + HTML.EndTag("span"));
+
 
 			if(line.Contains("\""))
 			{
