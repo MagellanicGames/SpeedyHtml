@@ -54,6 +54,7 @@ namespace SpeedyHtmlBuilder
 			line = line.Replace("false",basic_span + "false" + HTML.EndTag("span"));
 			line = line.Replace(" using ",basic_span + "using " + HTML.EndTag("span"));
 			line = line.Replace(" string ",basic_span + "string" + HTML.EndTag("span"));
+			line = line.Replace(" else ",basic_span + "else" + HTML.EndTag("span"));
 
 			line = line.Replace("Vector2",class_span + "Vector2" + HTML.EndTag("span"));
 			line = line.Replace("Vector3",class_span + "Vector3" + HTML.EndTag("span"));
@@ -76,7 +77,7 @@ namespace SpeedyHtmlBuilder
 			line = line.Replace("KeyboardState",class_span + "KeyboardState" + HTML.EndTag("span"));
 			line = line.Replace("SoundEffect ",class_span + "SoundEffect" + HTML.EndTag("span"));
 			line = line.Replace("SoundEffectInstance",class_span + "SoundEffectInstance" + HTML.EndTag("span"));
-			line = line.Replace("SpriteBatch ",class_span + "SpriteBatch " + HTML.EndTag("span"));
+			line = line.Replace(" SpriteBatch ",class_span + "SpriteBatch " + HTML.EndTag("span"));
 			line = line.Replace(" List ",class_span + "List" + HTML.EndTag("span"));
 			line = line.Replace(" Controls ",class_span + "Controls" + HTML.EndTag("span"));
 			line = line.Replace(" Camera ",class_span + "Camera" + HTML.EndTag("span"));
@@ -85,6 +86,8 @@ namespace SpeedyHtmlBuilder
 			line = line.Replace(" Directory ",class_span + "Directory" + HTML.EndTag("span"));
 			line = line.Replace(" FileInfo ",class_span + "FileInfo" + HTML.EndTag("span"));
 			line = line.Replace(" Dictionary ",class_span + "Dictionary" + HTML.EndTag("span"));
+			line = line.Replace(" Text ",class_span + "Text" + HTML.EndTag("span"));
+			line = line.Replace(" SpriteFont ",class_span + "SpriteFont" + HTML.EndTag("span"));
 
 
 			if(line.Contains("\""))
